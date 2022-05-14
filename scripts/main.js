@@ -1,7 +1,6 @@
 /**
  * This is not beautiful code
  */
-
 const MAX_ROW_COUNT = 8;
 const MAX_COLUMN_COUNT = 8;
 const MAX_PLANT_STAGE = 3;
@@ -57,12 +56,11 @@ function createGameMatrix(rowCount, columnCount) {
  */
 function startGame() {
     generateGameTable(MAX_ROW_COUNT, MAX_COLUMN_COUNT);
-    let matrix = createGameMatrix(MAX_ROW_COUNT, MAX_COLUMN_COUNT);
 
     _gameState = {
         isGameOver: false,
         impassablePlantCount: 0,
-        matrix,
+        matrix: createGameMatrix(MAX_ROW_COUNT, MAX_COLUMN_COUNT),
         playerRow: 1,
         playerCol: 1
     };
@@ -169,6 +167,7 @@ function growPlant(matrix, row, col) {
                 if(matrix[row][col] != MAX_PLANT_STAGE) {
                     growPlant(matrix, row, col);
                 } else {
+                    console.log(matrix[row][col]);
                     let plantTd = document.getElementById(`td-${row}-${col}`);
                     plantTd.classList.add('impassable');
 
