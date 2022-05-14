@@ -1,0 +1,38 @@
+table {
+    border-collapse: collapse;
+    background: green;
+}
+
+table,
+tr,
+td {
+    border: 1px solid black;
+}
+
+tr,
+td {
+    padding: 0;
+    margin: 0;
+}
+
+td {
+    box-sizing: border-box;
+    height: min(10vw, 10vh);
+    width: min(10vw, 10vh);
+}
+
+.player {
+    background: blue;
+}
+
+.plant-stage-1 {
+    background: orange;
+}
+
+.plant-stage-2 {
+    background: orangered;
+}
+
+.plant-stage-3 {
+    background: purple;
+}
