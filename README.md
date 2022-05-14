@@ -15,6 +15,8 @@ TBD
 
 * [Mega Game Music Collection](https://www.gamedevmarket.net/asset/mega-game-music-collection/)
     * Energy Rock Track #3 (looped).wav
+* [Righteous Google Font](https://fonts.google.com/specimen/Righteous)
+* [Moment.js](https://momentjs.com/)
 
 ## Useful Resources
 

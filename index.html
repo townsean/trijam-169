@@ -4,17 +4,33 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>TBD | Trijam #169</title>
+        <title>Overgrowth | Trijam #169</title><link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link href="styles/style.css" rel="stylesheet">
     </head>
     <body>
-        <header>TBD | Trijam #169</header>
+        <header>Overgrowth | Trijam #169</header>
         <main>
-            <table id="game-table"></table>
+            <section class="game-stats">
+                <label id="time-remaining-label"></label>
+                <label id="max-population-label"></label>
+            </section>
+            <section class="table-container">
+                <table id="game-table"></table>
+                <div id="start-game-table-overlay">
+                    <button id="start-button">Start Game</button>
+                </div>
+                <div id="end-game-table-overlay" class="hidden">
+                    <label>GAME OVER</label>
+                    <button id="restart-button">Restart Game</button>
+                </div>
+            </section>
         </main>
         <footer>
             A game by Ashley
         </footer>
-        <script src="scripts/main.js"></script>
+        <script src="scripts/moment.js"></script>
+        <script type="module" src="scripts/main.js"></script>
     </body>
 </html>

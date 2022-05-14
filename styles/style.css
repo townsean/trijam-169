@@ -1,3 +1,44 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(lightblue, darkblue);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Righteous', sans-serif;
+}
+
+header {
+    background: lightgreen;
+    font-size: 1.25rem;
+}
+
+header,
+footer {
+    padding: 15px;
+}
+
+footer {
+    color: lightblue;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main,
+footer {
+    align-self: center;
+}
+
 table {
     border-collapse: collapse;
     background: green;
@@ -22,17 +63,107 @@ td {
 }
 
 .player {
+    height: 100%;
     background: blue;
+}
+
+.plant-stage-1,
+.plant-stage-2,
+.plant-stage-3 {
+    height: 100%;
+    transition: background-color 75ms linear;
 }
 
 .plant-stage-1 {
     background: orange;
+    border-radius: 50%;
 }
 
 .plant-stage-2 {
     background: orangered;
+    border-radius: 35%;
 }
 
 .plant-stage-3 {
     background: purple;
+    border-radius: 15%;
 }
+
+.impassable {
+    background: red;
+}
+
+.game-stats {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.flashing-red {
+    animation: 750ms infinite alternate-reverse flashred; 
+}
+
+.table-container {
+    position: relative;
+}
+
+#time-remaining-label {
+    text-align: left;
+}
+
+#time-remaining-label::before {
+    content: "Time Remaining: "
+}
+
+#max-population-label {
+    text-align: right;
+    margin-left: auto;
+}
+
+#max-population-label::before {
+    content: "Population Limit: "
+}
+
+#start-game-table-overlay,
+#end-game-table-overlay {
+    position: absolute;
+    background: black;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+#start-game-table-overlay {
+}
+
+#end-game-table-overlay {
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes flashred {
+    from {
+        color: black;
+    }
+
+    to {
+        color: red;
+    }
+}
+
+@media (max-width: 700px) {
+    .game-stats {
+        flex-direction: column;
+    }
+
+    #max-population-label {
+        text-align: left;
+        margin-right: auto;
+        margin-left: 0;
+    }
+} 
