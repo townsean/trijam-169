@@ -95,10 +95,9 @@ function startGame() {
         }
     }, 500);
 
-    // Set countdown date (30 seconds from now)
     const startTime = moment();
 
-    // Start decrementing current time
+    // Start incrementing current time label
     const timeRemainingIntervalId = setInterval(() => {
         if (_gameState.isGameOver) {
             clearInterval(timeRemainingIntervalId);
@@ -128,6 +127,7 @@ function updatePlayerPosition(row, col) {
     // if monster inside cell, clear it
     if(_gameState.matrix[_gameState.playerRow][_gameState.playerCol]) {
         playerTd.setAttribute("class", "")
+        playSound('assets/sounds/eat.wav');
     } 
         
     playerTd.classList.add('player');
@@ -153,7 +153,6 @@ function growPlant(matrix, row, col) {
                 if(matrix[row][col] != MAX_PLANT_STAGE) {
                     growPlant(matrix, row, col);
                 } else {
-                    console.log(matrix[row][col]);
                     let plantTd = document.getElementById(`td-${row}-${col}`);
                     plantTd.classList.add('impassable');
 
@@ -206,9 +205,10 @@ function canPlantGrow(plant) {
  * @param {*} url 
  * @param {*} loop 
  */
-function playSound(url, loop = false) {
+function playSound(url, volume = 1, loop = false) {
     const audio = new Audio();
     audio.src = url;
+    audio.volume = volume;
     audio.loop = loop;
     audio.play();
 }
@@ -222,26 +222,38 @@ function onKeydown(event) {
     switch(event.key) {
         case "ArrowDown":
         case "s":
+        case "S":
             if (_gameState.playerRow + 1 < MAX_ROW_COUNT && _gameState.matrix[_gameState.playerRow + 1][_gameState.playerCol] != MAX_PLANT_STAGE) {
                 updatePlayerPosition(_gameState.playerRow + 1, _gameState.playerCol);
+            } else {
+                playSound('assets/sounds/bump.wav');
             }
             break;
         case "ArrowUp":
         case "w":
+        case "W":
             if (_gameState.playerRow - 1 >= 0 && _gameState.matrix[_gameState.playerRow - 1][_gameState.playerCol] != MAX_PLANT_STAGE) {
                 updatePlayerPosition(_gameState.playerRow - 1, _gameState.playerCol);
+            } else {
+                playSound('assets/sounds/bump.wav');
             }
             break;
         case "ArrowLeft":
         case "a":
+        case "A":
             if (_gameState.playerCol - 1 >= 0 && _gameState.matrix[_gameState.playerRow][_gameState.playerCol - 1] != MAX_PLANT_STAGE) {
                 updatePlayerPosition(_gameState.playerRow, _gameState.playerCol - 1);
+            } else {
+                playSound('assets/sounds/bump.wav');
             }
             break;
         case "ArrowRight":
         case "d":
+        case "D":
             if (_gameState.playerCol + 1 < MAX_COLUMN_COUNT && _gameState.matrix[_gameState.playerRow][_gameState.playerCol + 1] != MAX_PLANT_STAGE) {
                 updatePlayerPosition(_gameState.playerRow, _gameState.playerCol + 1);
+            } else {
+                playSound('assets/sounds/bump.wav');
             }
             break;
         default:
@@ -265,7 +277,7 @@ function main() {
 
     const startButton = document.getElementById('start-button');
     startButton.addEventListener("click", () => {
-        playSound('assets/sounds/soundtrack.wav', true);
+        playSound('assets/sounds/soundtrack.wav', 0.75, true);
 
         const overlay = document.getElementById('start-game-table-overlay');
         overlay.classList.add('hidden');

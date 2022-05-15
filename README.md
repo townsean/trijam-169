@@ -5,7 +5,9 @@ Source code for Ashley's Trijam #169 entry. The theme is "Overpopulation."
 
 ## Synopsis 
 
-TBD
+Overgrowth is a grid based game where players are trying to keep the population of monsterious plants under control by consuming them.  Don't let the plants grow too large or they'll become impossible to eat and block your path as you try to access the other plants.
+
+Use arrow keys or WASD to move the player.
 
 ## Built With
 
@@ -15,12 +17,12 @@ TBD
 
 * [Mega Game Music Collection](https://www.gamedevmarket.net/asset/mega-game-music-collection/)
     * Energy Rock Track #3 (looped).wav
+* Mega SFX Pack
+    * Hit_Hurt3.wav
+    * Jump18.wav
+    * human_attack_2.wav
 * [Righteous Google Font](https://fonts.google.com/specimen/Righteous)
 * [Moment.js](https://momentjs.com/)
-
-## Useful Resources
-
-TBD
 
 ## Project Setup
 

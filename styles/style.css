@@ -36,6 +36,17 @@ header {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: black;
+    text-shadow: 1px 1px white;
+    transition: color 150ms linear;
+}
+
 h1 {
     font-size: 5vw;
     word-wrap: break-word;
@@ -71,13 +82,13 @@ footer {
 
 table {
     border-collapse: collapse;
-    background: green;
+    background: saddlebrown;
 }
 
 table,
 tr,
 td {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.35);
 }
 
 tr,
@@ -94,7 +105,33 @@ td {
 
 .player {
     height: 100%;
-    background: blue;
+    background: #6017EB;
+    position:relative;
+}
+
+.player::before {
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+    background: black;
+    width: 1vw;
+    height: 1vw;
+    top: 2vw;
+    left: 1.2vw;
+    box-shadow: 2.75vw 0 black;
+}
+
+.player::after {
+    position: absolute;
+    content: '';
+    border-radius: 5px;
+    width: 4vw;
+    height: 2vw;
+    top: 3.25vw;
+    left: .8vw;
+    border: .2vw solid black;
+    background: linear-gradient(white 25%, red 25%, red 75%, white 75%);
+    animation: 300ms infinite alternate-reverse munching;
 }
 
 .plant-stage-1,
@@ -105,18 +142,98 @@ td {
 }
 
 .plant-stage-1 {
-    background: orange;
+    background: forestgreen;
     border-radius: 50%;
+    position: relative;
+}
+
+.plant-stage-1::before {
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    content: '';
+    border-radius: 50%;
+    background-color: black;
+    height: 1vw;
+    width: 1vw;
+    box-shadow: 2vw 0 black,
+                1vw 1.5vw black;
+}
+
+.plant-stage-1::after {
+    position: absolute;
+    top: 1.1vw;
+    left: 1.1vw;
+    content: '';
+    border-radius: 50%;
+    background-color: white;
+    height: .4vw;
+    width: .4vw;
+    box-shadow: 2vw 0 white,
+                1.4vw 2vw palevioletred,
+                1.3vw 2vw palevioletred;
 }
 
 .plant-stage-2 {
-    background: orangered;
+    background: yellow;
     border-radius: 35%;
+    position: relative;
+}
+
+.plant-stage-2::before {
+    position: absolute;
+    top: 1.8vw;
+    left: 1.5vw;
+    content: '';
+    border-radius: 50%;
+    background-color: black;
+    height: .75vw;
+    width: .75vw;
+    box-shadow: 2.8vw 0 black;
+    transition: opacity 300ms linear;
+}
+
+.plant-stage-2::after {
+    position: absolute;
+    top: 3.3vw;
+    left: 1.5vw;
+    content: '';
+    border-radius: 5px;
+    background-color: black;
+    height: .5vw;
+    width: 3.8vw;
+    transition: opacity 200ms linear;
 }
 
 .plant-stage-3 {
-    background: purple;
+    background: whitesmoke;
     border-radius: 15%;
+    position: relative;
+}
+
+.plant-stage-3::after {
+    content: '';
+    position: absolute;
+    height: .5vw;
+    width: 1.25vw;
+    top: 2.2vw;
+    left: 1vw;
+    background-color: black;
+    border-radius: 2px;
+    box-shadow: 3vw 0 black;
+    transition: opacity 200ms linear;
+}
+
+.plant-stage-3::before {
+    content: '';
+    position: absolute;
+    height: .5vw;
+    width: 4.25vw;
+    top: 4vw;
+    left: 1vw;
+    background-color: black;
+    border-radius: 2px;
+    transition: opacity 200ms linear;
 }
 
 .impassable {
@@ -181,6 +298,7 @@ td {
 
 .instructions {
     color: white;
+    text-shadow: 1px 1px black;
     margin: 0 30px 60px 30px;
     font-size: 1.3vw;
     text-align: center;
@@ -196,6 +314,19 @@ td {
     }
 }
 
+@keyframes munching {
+    from {
+        height: 2vw;
+        background: linear-gradient(white 25%, red 25%, red 75%, white 75%);
+    }
+
+    to {
+        height: 1vw;
+        background: linear-gradient(white 46%, black 46%, black 54%, white 54%);
+    }
+    
+}
+
 @media (max-width: 700px) {
     .game-stats {
         flex-direction: column;
@@ -205,5 +336,9 @@ td {
         text-align: left;
         margin-right: auto;
         margin-left: 0;
+    }
+
+    #elasped-time-label {
+        width: 100%;
     }
 } 
