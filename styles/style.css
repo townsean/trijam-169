@@ -206,7 +206,7 @@ td {
 }
 
 .plant-stage-3 {
-    background: whitesmoke;
+    background: black;
     border-radius: 15%;
     position: relative;
 }
@@ -218,9 +218,9 @@ td {
     width: 1.25vw;
     top: 2.2vw;
     left: 1vw;
-    background-color: black;
+    background-color: white;
     border-radius: 2px;
-    box-shadow: 3vw 0 black;
+    box-shadow: 3vw 0 white;
     transition: opacity 200ms linear;
 }
 
@@ -231,7 +231,7 @@ td {
     width: 4.25vw;
     top: 4vw;
     left: 1vw;
-    background-color: black;
+    background-color: white;
     border-radius: 2px;
     transition: opacity 200ms linear;
 }
