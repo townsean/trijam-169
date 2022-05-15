@@ -4,8 +4,7 @@
 const MAX_ROW_COUNT = 8;
 const MAX_COLUMN_COUNT = 8;
 const MAX_PLANT_STAGE = 3;
-const MAX_IMPASSABLE_PLANT_COUNT = (MAX_ROW_COUNT * MAX_COLUMN_COUNT) / 2;
-const TIME_LIMIT_IN_SECONDS = 30;
+const MAX_IMPASSABLE_PLANT_COUNT = (MAX_ROW_COUNT * MAX_COLUMN_COUNT) / 4;
 
 /**
  * Generate game table
@@ -73,8 +72,8 @@ function startGame() {
     populationLabel.innerHTML = `${_gameState.impassablePlantCount}/${MAX_IMPASSABLE_PLANT_COUNT}`;
 
     // Initialize time remaining label
-    let timeRemainingLabel = document.getElementById('time-remaining-label');
-    timeRemainingLabel.innerHTML = `00:${TIME_LIMIT_IN_SECONDS}`;
+    let elaspedTimeLabel = document.getElementById('elasped-time-label');
+    elaspedTimeLabel.innerHTML = '00:00';
     
     // Create interval for triggering plant growth
     const plantGrowthIntervalId = setInterval(() => {
@@ -94,11 +93,10 @@ function startGame() {
 
             growPlant(_gameState.matrix, row, col);
         }
-
     }, 500);
 
     // Set countdown date (30 seconds from now)
-    const endTime = moment().add(TIME_LIMIT_IN_SECONDS + 1, 'seconds');
+    const startTime = moment();
 
     // Start decrementing current time
     const timeRemainingIntervalId = setInterval(() => {
@@ -106,22 +104,11 @@ function startGame() {
             clearInterval(timeRemainingIntervalId);
             return;
         }
+        
+        const elaspedTime = moment(moment().diff(startTime));
 
-        const currentTime = moment();
-        const timeRemaining = moment(endTime.diff(currentTime));
-
-        let timeRemainingLabel = document.getElementById('time-remaining-label');
-        timeRemainingLabel.innerHTML = timeRemaining.format('mm:ss');
-
-        if (timeRemaining.seconds() <= 0) {
-            clearInterval(timeRemainingIntervalId);
-            _gameState.isGameOver = true;
-            timeRemainingLabel.classList.add('flashing-red');
-
-            // Show restart game screen
-            const overlay = document.getElementById('end-game-table-overlay');
-            overlay.classList.remove('hidden');
-        }
+        let elaspedTimeLabel = document.getElementById('elasped-time-label');
+        elaspedTimeLabel.innerHTML = elaspedTime.format('mm:ss');
     }, 1000);
 }
 
@@ -148,7 +135,6 @@ function updatePlayerPosition(row, col) {
     // update player position in matrix
     _gameState.matrix[_gameState.playerRow][_gameState.playerCol] =  { row: _gameState.playerRow, col: _gameState.playerCol };
 }
-
 
 /**
  * Increase plant growth in timed intervals
@@ -179,6 +165,8 @@ function growPlant(matrix, row, col) {
                     // End game if plant population is overgrown
                     if(_gameState.impassablePlantCount == MAX_IMPASSABLE_PLANT_COUNT) {
                         _gameState.isGameOver = true;
+                        let elaspedTimeLabel = document.getElementById('elasped-time-label');
+                        elaspedTimeLabel.classList.add('flashing-red');
                         populationLabel.classList.add('flashing-red');
 
                         // Show restart game screen
@@ -225,8 +213,12 @@ function playSound(url, loop = false) {
     audio.play();
 }
 
+/**
+ * 
+ * @param {*} event 
+ * @returns 
+ */
 function onKeydown(event) {
-
     switch(event.key) {
         case "ArrowDown":
         case "s":
@@ -268,8 +260,8 @@ function main() {
     populationLabel.innerHTML = `0/${MAX_IMPASSABLE_PLANT_COUNT}`;
 
     // Initialize time remaining label
-    let timeRemainingLabel = document.getElementById('time-remaining-label');
-    timeRemainingLabel.innerHTML = `00:${TIME_LIMIT_IN_SECONDS}`;
+    let elaspedTimeLabel = document.getElementById('elasped-time-label');
+    elaspedTimeLabel.innerHTML = '00:00';
 
     const startButton = document.getElementById('start-button');
     startButton.addEventListener("click", () => {
@@ -288,8 +280,8 @@ function main() {
         let populationLabel = document.getElementById('max-population-label');
         populationLabel.classList.remove('flashing-red');
 
-        let timeRemainingLabel = document.getElementById('time-remaining-label');
-        timeRemainingLabel.classList.remove('flashing-red');
+        let elaspedTimeLabel = document.getElementById('elasped-time-label');
+        elaspedTimeLabel.classList.remove('flashing-red');
 
         const overlay = document.getElementById('end-game-table-overlay');
         overlay.classList.add('hidden');

@@ -13,17 +13,29 @@
         <header>Overgrowth | Trijam #169</header>
         <main>
             <section class="game-stats">
-                <label id="time-remaining-label"></label>
+                <label id="elasped-time-label"></label>
                 <label id="max-population-label"></label>
             </section>
             <section class="table-container">
                 <table id="game-table"></table>
                 <div id="start-game-table-overlay">
-                    <button id="start-button">Start Game</button>
+                    <section>
+                        <h1>OVERGROWTH</h1>
+                        <section class="instructions">
+                            Keep the population of monsterious plants down to a minimum!
+                            <br><br>
+                            Gobble up the plants before they grow too strong to eat.
+                            <br>
+                            Use the <strong>arrow keys</strong> or <strong>WASD</strong> to move.
+                        </section>
+                        <button id="start-button">Start Game</button>
+                    </section>
                 </div>
                 <div id="end-game-table-overlay" class="hidden">
-                    <label>GAME OVER</label>
-                    <button id="restart-button">Restart Game</button>
+                    <section>
+                        <h1>GAME OVER</h1>
+                        <button id="restart-button">Restart Game</button>
+                    </section>
                 </div>
             </section>
         </main>
