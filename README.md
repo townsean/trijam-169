@@ -1,5 +1,5 @@
 # trijam-169
-Source code for Ashley's Trijam #169 entry. The theme is "Overpopulation."
+Source code for [Ashley's Trijam #169 entry](https://itch.io/jam/trijam-169/rate/1532145). The theme is "Overpopulation."
 
 [Trijam](https://itch.io/jam/trijam-169) is a weekly game jam where the goal is to create a game in under 3 hours of development time.
 
@@ -7,7 +7,7 @@ Total Dev Time: ~8 hours.
 
 ## Synopsis 
 
-Overgrowth is a grid based game where players are trying to keep the population of monsterious plants under control by consuming them.  Don't let the plants grow too large or they'll become impossible to eat and block your path as you try to access the other plants.
+Overgrowth is a grid based game where players are trying to keep the population of monstrous plants under control by consuming them.  Don't let the plants grow too large or they'll become impossible to eat and block your path as you try to access the other plants.
 
 Use arrow keys or WASD to move the player.
 
